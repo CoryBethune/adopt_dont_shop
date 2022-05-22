@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/applications', to: 'applications#create'
   get '/applications/new', to: 'applications#new'
   get '/applications/:id', to: 'applications#show'
+  get '/admin/applications/:id', to: 'admin_applications#show'
 
   post '/application_pets/', to: 'application_pets#create'
 
