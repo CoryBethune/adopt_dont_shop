@@ -26,8 +26,8 @@ RSpec.describe 'admin application show page' do
     click_button('Approve Pet')
 
     expect(current_path).to eq("/admin/applications/#{application1.id}")
-
     within('div#petApproval') do
+      save_and_open_page
       expect(page).to have_content('Approved')
 
       expect(page).to_not have_content('Approve Pet')

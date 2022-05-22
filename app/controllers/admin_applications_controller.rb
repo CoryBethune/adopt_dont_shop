@@ -5,8 +5,7 @@ class AdminApplicationsController < ApplicationController
 
   def update
     pet = Application.find(params[:id]).pets.find(params[:pet_id])
-    pet.adoptable = false
-    binding.pry
+    pet.update(adoptable: false)
     redirect_to "/admin/applications/#{params[:id]}"
   end
 
