@@ -12,6 +12,6 @@ class Application < ApplicationRecord
   has_many :shelters, through: :pets
 
   def self.pending_apps
-    joins(shelters: :pets).where(status: 'Pending')
+    joins(:shelters).where(status: 'Pending')
   end
 end
