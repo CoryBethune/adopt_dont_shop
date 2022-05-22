@@ -19,18 +19,30 @@ RSpec.describe 'admin application show page' do
                                        state: 'Colorado', zip_code: '19274', status: 'Pending')
 
     ap1 = ApplicationPet.create!(application_id: application1.id, pet_id: pet1.id)
-    ap2 = ApplicationPet.create!(application_id: application2.id, pet_id: pet3.id)
+    ap2 = ApplicationPet.create!(application_id: application1.id, pet_id: pet3.id)
 
     visit "/admin/applications/#{application1.id}"
 
-    click_button('Approve Pet')
+    within('div#petApproval') do
+      first(:button, 'Approve Pet').click
+    end
 
     expect(current_path).to eq("/admin/applications/#{application1.id}")
+
     within('div#petApproval') do
-      save_and_open_page
       expect(page).to have_content('Approved')
 
-      expect(page).to_not have_content('Approve Pet')
+      expect(page).to have_button('Approve Pet')
+    end
+
+    within('div#petApproval') do
+      first(:button, 'Approve Pet').click
+    end
+
+    within('div#petApproval') do
+      expect(page).to have_content('Approved')
+
+      expect(page).to_not have_button('Approve Pet')
     end
   end
 
