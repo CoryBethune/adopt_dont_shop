@@ -1,5 +1,5 @@
 class AddRejectedToApplicationPets < ActiveRecord::Migration[5.2]
   def change
-    add_column :application_pets, :rejected, :boolean, default: false
+    add_column :application_pets, :rejected, :boolean, :default => false
   end
 end

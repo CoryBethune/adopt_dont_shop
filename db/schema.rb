@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_05_22_191211) do
     t.bigint "pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "rejected"
+    t.boolean "rejected", default: false
     t.index ["application_id"], name: "index_application_pets_on_application_id"
     t.index ["pet_id"], name: "index_application_pets_on_pet_id"
   end

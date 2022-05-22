@@ -7,6 +7,7 @@ class ApplicationPetsController < ApplicationController
   private
 
   def application_pets_params
-    params.permit(:application_id, :pet_id)
+    params.permit(:application_id, :pet_id, :rejected)
+    params.with_defaults(rejected: false)  
   end
 end
