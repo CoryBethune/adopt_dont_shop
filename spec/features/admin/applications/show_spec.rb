@@ -32,8 +32,6 @@ RSpec.describe 'admin application show page' do
 
       expect(page).to_not have_content('Approve Pet')
     end
-
-
   end
 
 
