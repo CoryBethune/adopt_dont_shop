@@ -6,7 +6,7 @@ class AdminApplicationsController < ApplicationController
   def update
     pet = Application.find(params[:id]).pets.find(params[:pet_id])
     if params[:rejected].present?
-      pet.application_pet.update(params[:rejected])
+      pet.application_pet.first.update(rejected: true)
     else
       pet.update(adoptable: false)
     end
