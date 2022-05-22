@@ -9,9 +9,9 @@
 <div id="petApproval">
 <h3>Pets Applying For: <% @application.pets.each do |pet| %></h3>
                        <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-                       <% binding.pry %>
-                        <% if pet.adoptable == true && pet.application_pets.rejected == false%>
+                        <% if pet.adoptable == true && pet.application_pet.rejected == false%>
                           <%= button_to 'Approve Pet', "/admin/applications/#{@application.id}", method: :patch, params: {pet_id: pet.id}  %>
+                          <%= button_to 'Reject Pet', "/admin/applications/#{@application.id}", method: :patch, params: {rejected: true} %>
                         <% else %>
                           <p>Approved</p>
                         <% end %>
