@@ -9,4 +9,9 @@ class Application < ApplicationRecord
 
   has_many :application_pet
   has_many :pets, through: :application_pet
+  has_many :shelters, through: :pets
+
+  def self.pending_apps
+    joins(:shelters).where(status: 'Pending')
+  end
 end
