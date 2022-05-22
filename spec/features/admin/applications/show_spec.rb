@@ -135,7 +135,7 @@ RSpec.describe 'admin application show page' do
     end
 
     visit "/admin/applications/#{application2.id}"
-
+  
     within('div#petApproval') do
       first(:button, 'Reject Pet').click
     end
