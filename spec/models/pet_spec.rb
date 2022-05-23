@@ -53,8 +53,14 @@ RSpec.describe Pet, type: :model do
     describe '.app_approved?' do
       it 'checks the approved value of the pet on a specific application' do
         expect(@pet_1.app_approved?(@application1)).to eq(false)
-
       end
     end
+
+    describe '.app_rejected?' do
+      it 'checks the approved value of the pet on a specific application' do
+        expect(@pet_1.app_rejected?(@application1)).to eq(false)
+      end
+    end
+
   end
 end
