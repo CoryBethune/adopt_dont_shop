@@ -12,11 +12,11 @@ class Pet < ApplicationRecord
     where(adoptable: true)
   end
 
-  def app_approved?
-    application_pet.where(application_id: @application.id).first.approved
+  def app_approved?(application)
+    application_pet.where(application_id: application.id).first.approved
   end
 
-  def app_rejected?
-    application_pet.where(application_id: @application.id).first.rejected
+  def app_rejected?(application)
+    application_pet.where(application_id: application.id).first.rejected
   end
 end
