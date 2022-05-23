@@ -16,6 +16,9 @@ RSpec.describe Application, type: :model do
   end
 
   describe  'class methods' do
+    Shelter.destroy_all
+    Pet.destroy_all
+    Application.destroy_all
     shelter1 = Shelter.create!(foster_program: true, name: 'Gally', city: 'Denver', rank: 21)
     shelter2 = Shelter.create!(foster_program: true, name: 'Fally', city: 'Denver', rank: 21)
     shelter3 = Shelter.create!(foster_program: true, name: 'Eally', city: 'Denver', rank: 21)
