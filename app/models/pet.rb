@@ -15,4 +15,8 @@ class Pet < ApplicationRecord
   def app_approved?
     application_pet.where(application_id: @application.id).first.approved
   end
+
+  def app_rejected?
+    application_pet.where(application_id: @application.id).first.rejected
+  end
 end
