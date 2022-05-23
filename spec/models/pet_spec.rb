@@ -26,7 +26,6 @@ RSpec.describe Pet, type: :model do
 
     @ap1 = ApplicationPet.create!(application_id: @application1.id, pet_id: @pet_1.id)
     @ap2 = ApplicationPet.create!(application_id: @application1.id, pet_id: @pet_3.id)
-
   end
 
   describe 'class methods' do
@@ -61,6 +60,5 @@ RSpec.describe Pet, type: :model do
         expect(@pet_1.app_rejected?(@application1)).to eq(false)
       end
     end
-
   end
 end
