@@ -9,12 +9,12 @@
 <div id="petApproval">
 <h3>Pets Applying For: <% @application.pets.each do |pet| %></h3>
                        <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-                        <% if pet.app_approved? == false && pet.app_rejected == false%>
+                        <% if pet.app_approved?(@application) == false && pet.app_rejected?(@application) == false%>
                           <%= button_to 'Approve Pet', "/admin/applications/#{@application.id}", method: :patch, params: {approved: true, pet_id: pet.id}  %>
                           <%= button_to 'Reject Pet', "/admin/applications/#{@application.id}", method: :patch, params: {rejected: true, pet_id: pet.id} %>
-                        <% elsif pet.app_rejected? == true %>
+                        <% elsif pet.app_rejected?(@application) == true %>
                           <p>Rejected</p>
-                        <% elsif pet.app_approved? == true %>
+                        <% elsif pet.app_approved?(@application) == true %>
                           <p>Approved</p>
                         <% end %>
                        <% end %>
