@@ -14,10 +14,20 @@ RSpec.describe Pet, type: :model do
   end
 
   before(:each) do
+    Shelter.destroy_all
+    Pet.destroy_all
     @shelter_1 = Shelter.create(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
     @pet_1 = @shelter_1.pets.create(name: 'Mr. Pirate', breed: 'tuxedo shorthair', age: 5, adoptable: true)
     @pet_2 = @shelter_1.pets.create(name: 'Clawdia', breed: 'shorthair', age: 3, adoptable: true)
     @pet_3 = @shelter_1.pets.create(name: 'Ann', breed: 'ragdoll', age: 3, adoptable: false)
+    @application1 = Application.create!(name: 'Sylvester Tommy', street_address: '1827 Vincent Ave', city: 'Halifax',
+                                       state: 'Colorado', zip_code: '19274', status: 'Pending')
+
+    @application2 = Application.create!(name: 'Jamie James', street_address: '1827 Vincent Ave', city: 'Halifax',
+                                       state: 'Colorado', zip_code: '19274', status: 'Pending')
+
+    @ap1 = ApplicationPet.create!(application_id: @application1.id, pet_id: @pet_1.id)
+    @ap2 = ApplicationPet.create!(application_id: @application1.id, pet_id: @pet_3.id)
   end
 
   describe 'class methods' do
@@ -38,6 +48,18 @@ RSpec.describe Pet, type: :model do
     describe '.shelter_name' do
       it 'returns the shelter name for the given pet' do
         expect(@pet_3.shelter_name).to eq(@shelter_1.name)
+      end
+    end
+
+    describe '.app_approved?' do
+      it 'checks the approved value of the pet on a specific application' do
+        expect(@pet_1.app_approved?(@application1)).to eq(false)
+      end
+    end
+
+    describe '.app_rejected?' do
+      it 'checks the approved value of the pet on a specific application' do
+        expect(@pet_1.app_rejected?(@application1)).to eq(false)
       end
     end
   end

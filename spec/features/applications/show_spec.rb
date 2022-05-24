@@ -57,7 +57,7 @@ RSpec.describe 'application show page' do
 
     click_button('Search')
 
-    click_button('Adopt this Pet')
+    click_button('Adopt this Pet', match: :first)
 
     expect(current_path).to eq("/applications/#{application.id}")
 
@@ -75,7 +75,7 @@ RSpec.describe 'application show page' do
 
     fill_in('Search', with: 'Spot')
     click_button('Search')
-    click_button('Adopt this Pet')
+    click_button('Adopt this Pet', match: :first)
 
     expect(page).to have_content('Submit Application')
 
